@@ -1,0 +1,40 @@
+label {
+    font-size: 12px;
+    letter-spacing: 0;
+    display: block;
+    margin-bottom: .25rem;
+}
+
+input[type=text], input[type=password] {
+    display: block;
+    border: none;
+    border-bottom: 3px solid #aaa;
+    padding: .25rem;
+    font: 400 14px 'Inter var', 'Inter', sans-serif;
+    letter-spacing: -0.006em;
+    outline: none;
+    margin-bottom: .5rem;
+    transition: background-color .2s, border-bottom-color .2s;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #eee;
+    border-bottom-color: var(--accent-blue);
+}
+
+.input-error {
+    display: block;
+    color: var(--accent-red);
+    font-size: 14px;
+    letter-spacing: -0.006em
+}
+
+input[type=submit] {
+    font: 400 14px 'Inter var', 'Inter', sans-serif;
+    letter-spacing: -0.006em;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--accent-blue);
+    color: white;
+}

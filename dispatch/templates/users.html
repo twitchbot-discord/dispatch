@@ -1,0 +1,26 @@
+{% extends "layouts/base.html" %}
+{% block head %}
+{{super()}}
+<link rel="stylesheet" href="/assets/table.css">
+{% endblock %}
+{% block content %}
+<div class="main">
+    <h1>Manage users</h1>
+    <table class="minimalistBlack">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th style="text-align: right">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td style="text-align: right"><a href="/users/{{user.id}}/manage">Change password</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

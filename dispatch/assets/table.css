@@ -1,0 +1,44 @@
+table.minimalistBlack {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+table.minimalistBlack td, table.minimalistBlack th {
+    padding: .5rem;
+}
+
+table.minimalistBlack tbody tr {
+    border-bottom: 1px solid #ccc;
+}
+
+table.minimalistBlack tbody td {
+    font: 400 .75rem 'Roboto Mono', monospace;
+}
+
+table.minimalistBlack thead {
+    background-color: #eeeeee;
+    border-bottom: 2px solid black;
+}
+
+table.minimalistBlack thead th {
+    font: 400 .8rem 'Roboto Mono', monospace;
+    color: black;
+    text-align: left;
+}
+
+table .level-0, table .level-0 td {
+    /* debug level */
+    background-color: #ddd;
+    font-style: italic !important;
+}
+
+table .level-2, table .level-2 td {
+    /* warning level */
+    background-color: var(--level-warn);
+}
+
+table .level-3, table .level-3 td {
+    /* error level */
+    background-color: var(--level-error);
+}
