@@ -12,6 +12,8 @@ Dispatch is a web dashboard and protocol that processes and saves AMQP events, m
    - A database called `dispatch`
    - `logs` and `users` tables
 
+Alternatively, you can build your own Docker image using the provided Dockerfile.
+
 ## How does it work?
 
 Dispatch takes messages from the `dispatch.logs` queue (on the default channel) and writes them to RethinkDB. Logs can be viewed at any time from the convenient web dashboard.
@@ -48,3 +50,27 @@ For example: if you have multiple workers for a single service, you might commun
 ## Client libraries
 
 There are currently no official client libraries for Dispatch. However, libraries for Java, Python, and TypeScript are planned. You can easily write your own Dispatch library in any language that has an AMQP client library.
+
+## First-time setup
+
+As of yet, Dispatch does not include a default username + password.
+You can generate a login by doing something like the following:
+
+```py
+from werkzeug.security import generate_password_hash
+from rethinkdb import RethinkDB
+
+r = RethinkDB()
+
+conn = r.connect(...)
+
+r.db('dispatch')
+  .table('users')
+  .insert({
+    'id': 'admin',
+    'password': generate_password_hash('your-password-here')
+  })
+  .run(conn)
+```
+
+In this case, the script would generate a user with username `admin` and password `your-password-here`.
