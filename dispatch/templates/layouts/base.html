@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}dispatch{% endblock %}</title>
+    <link rel="stylesheet" href="/assets/style.css">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <nav>
+        <div class="nav-accent">
+            <span class="version">
+                dispatch {{_app_version}}
+                &middot;
+                <a href="https://github.com">GitHub</a>
+            </span>
+            {% if current_user.is_authenticated %}
+                <span>
+                    Signed in as {{current_user.id}}
+                    (<a href="/logout">Sign out</a>)
+                </span>
+            {% endif %}
+        </div>
+        <div class="hero">
+            <a href="/">Overview</a>
+            <a href="/logs">Logs</a>
+            <a href="/channels">Channels</a>
+            <a href="/sources">Sources</a>
+            <a href="/users">Users</a>
+        </div>
+    </nav>
+    {% block content %}{% endblock %}
+</body>
+</html>

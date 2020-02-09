@@ -1,0 +1,6 @@
+werkzeug
+rethinkdb
+flask
+flask-login
+pika
+python-dotenv

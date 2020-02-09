@@ -1,0 +1,44 @@
+{% extends "layouts/base.html" %}
+{% block head %}
+{{super()}}
+<link rel="stylesheet" href="/assets/table.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
+{% endblock %}
+{% block content %}
+<div class="main">
+    <h1>Most recent logs</h1>
+    <p>Showing 100 most recent items</p>
+    <table class="minimalistBlack">
+        <thead>
+        <tr>
+            <th><!-- Skip for log level --></th>
+            <th>Channel</th>
+            <th>Source</th>
+            <th>Timestamp</th>
+            <th>Message</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for log in logs %}
+        <tr class="log-item level-{{log.level}}">
+            <td>
+                {% if log.level == 0 %}
+                <i class="fas fa-bug" title="Debug"></i>
+                {% elif log.level == 1 %}
+                <i class="fas fa-info-circle" title="Info"></i>
+                {% elif log.level == 2 %}
+                <i class="fas fa-exclamation-triangle" title="Warning"></i>
+                {% elif log.level == 3 %}
+                <i class="fas fa-times" title="Error"></i>
+                {% endif %}
+            </td>
+            <td>{{log.channel}}</td>
+            <td>{{log.source}}</td>
+            <td title="{{log.ts.strftime('%a, %b %d at %H:%M:%S.%f')}}">{{log.ts.strftime('%H:%M:%S')}}</td>
+            <td>{{log.msg}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
